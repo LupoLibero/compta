@@ -1,0 +1,18 @@
+{
+  "name": "compta-main",
+  "version": "0.0.1",
+  "description": "Compta CouchApp",
+  "load": "src/Main/app",
+  "modules": ["src"],
+  "attachments": ["static", "partials"],
+  "shell": [
+    "grunt compile"
+  ],
+  "dependencies": {
+    "properties": null,
+    "attachments": null,
+    "couchtypes": null,
+    "modules": null,
+    "blocking-multi-shell": null
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "dbForBots",
+  "version": "0.0.1",
+  "description": "CouchDb connector for bots",
+  "main": "db.coffee",
+  "dependencies": {
+    "cradle": "~0.6.7",
+    "q": "~1.0.1"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LupoLibero/dbForBots.git"
+  },
+
+  "author": [
+    "Sylvain Duchesne"
+  ],
+  "license": "GPL",
+
+  "homepage": "https://github.com/LupoLibero/dbForBots"
+}
