@@ -1,0 +1,15 @@
+{
+  "name": "bank_statement_parser",
+  "version": "0.0.1",
+  "description": "Bank statement parser",
+  "main": "pdfParser.coffee",
+  "dependencies": {
+    "python-shell": "0.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sylvain Duchesne",
+  "license": "GPL"
+}

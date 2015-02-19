@@ -1,0 +1,14 @@
+{
+  "name": "bank_sync",
+  "version": "0.0.1",
+  "description": "",
+  "main": "bankSync.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sylvain Duchesne",
+  "license": "GPL",
+  "dependencies": {
+    "python-shell": "0.0.3"
+  }
+}

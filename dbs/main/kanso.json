@@ -1,18 +1,19 @@
 {
-  "name": "compta-main",
+  "name": "canapERP-main",
   "version": "0.0.1",
-  "description": "Compta CouchApp",
-  "load": "src/Main/app",
-  "modules": ["src"],
-  "attachments": ["static", "partials"],
-  "shell": [
-    "grunt compile"
+  "description": "automated ERP (main part)",
+  "load": "lib/app",
+  "modules": [
+    "lib"
+  ],
+  "attachments": [
+    "html",
+    "static"
   ],
   "dependencies": {
     "properties": null,
     "attachments": null,
     "couchtypes": null,
-    "modules": null,
-    "blocking-multi-shell": null
+    "modules": null
   }
 }

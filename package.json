@@ -1,0 +1,16 @@
+{
+  "name": "canapERP",
+  "version": "0.0.1",
+  "description": "automated ERP",
+  "author": "Sylvain Duchesne",
+  "repository": "https://github.com/LupoLibero/compta",
+  "licence": "GPL",
+  "homepage": "",
+  "devDependencies": {},
+  "dependencies": {},
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  }
+}
