@@ -1,18 +1,19 @@
 <div>
-	<h3>{{ salutation }}</h3>
-  <table class="entries">
-    <tr>
-      <th>Date</th>
-      <th>Opération</th>
-      <th>Catégorie</th>
-      <th>Montant TTC</th>
-      <th></th>
-    </tr>
+  <table class="entries striped">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Opération</th>
+        <th>Catégorie</th>
+        <th>Montant TTC</th>
+        <th></th>
+      </tr>
+    </thead>
     <tr ng-repeat="entry in entries">
-      <td>{{ entry.execDate }}</td>
+      <td>{{ entry.execDate | date:'dd/MM/yyyy' }}</td>
       <td>{{ entry.title }}</td>
       <td>{{ entry.category }}</td>
-      <td>{{ entry.amount }}</td>
+      <td>{{ entry.amount | currency }}</td>
       <td></td>
     </tr>
   </table>
