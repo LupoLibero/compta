@@ -132,6 +132,12 @@ pdfParser = (path, callback) ->
                         label.indexOf('Date') >= 0
                   value = parseDate(value, startDate).getTime()
                 entry[label] = value
+            if entry.creditAmount?
+              entry.amount = entry.creditAmount
+              delete entry.creditAmount
+            if entry.debitAmount?
+              entry.amount = '-' + entry.debitAmount
+              delete entry.debitAmount
           else if isComplementaryLine(line, LCL.entryPattern) and
                   entries.length > 0
             entry = entries[-1..][0]

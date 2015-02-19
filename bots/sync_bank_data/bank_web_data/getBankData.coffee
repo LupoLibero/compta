@@ -1,14 +1,6 @@
 nodePath    = require 'path'
 
-dbConnector = require('../../../tools/dbForBots/db')
 PythonShell = require('python-shell')
-
-host = 'localhost'
-port = '5984'
-dbServer = dbConnector(host, port)
-appName = 'compta'
-dbName = appName
-db = dbServer(dbName, 'admin', 'admin')
 
 parseDate = (dateString, scheme, startDate) ->
   parts = dateString.split('.')

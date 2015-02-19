@@ -1,16 +1,16 @@
 
 
-storeEntry = (db, appName, entry) ->
-  db.update(appName + '-main' + '/entry_add', '', entry).then(
+storeEntry = (db, ddoc, entry) ->
+  db.update(ddoc + '/entry_add', '', entry).then(
     (result) =>
       console.log "succ", result
     (err) =>
       console.log "error", err
   )
 
-module.exports = (db, appName, bankEntries, startDate, endDate) ->
+module.exports = (db, ddoc, bankEntries, startDate, endDate) ->
   console.log "db", startDate, endDate
-  db.view(appName + '-main/entry_all', {
+  db.view(ddoc + '/entry_all', {
     startkey: parseInt startDate
     endkey:   parseInt endDate
     include_docs: true
@@ -24,7 +24,7 @@ module.exports = (db, appName, bankEntries, startDate, endDate) ->
       idx = dbEntries.indexOf(str)
       if idx == -1
         console.log "store", entry
-        #storeEntry(db, appName, entry)
+        storeEntry(db, ddoc, entry)
       else
         dbEntries.splice(idx, 1)
 

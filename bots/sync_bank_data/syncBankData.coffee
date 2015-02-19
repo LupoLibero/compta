@@ -6,8 +6,8 @@ sync         = require './sync/syncData.coffee'
 host = 'localhost'
 port = '5984'
 dbServer = dbConnector(host, port)
-appName = 'compta'
-dbName = appName
+appName = 'canapERP-main'
+dbName = 'canaperp'
 mainDb = dbServer(dbName, 'admin', 'admin')
 
 
@@ -21,7 +21,7 @@ parser "/home/eggo/ownCloud/box/banque/", (entries) ->
       entries[-1..][0].date
     )
 
-###
+
 getBankData (entries) ->
   if entries.length
     sync(
@@ -31,4 +31,3 @@ getBankData (entries) ->
       entries[-1..][0].date
       entries[0].date
     )
-###
