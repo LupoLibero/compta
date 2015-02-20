@@ -1,4 +1,5 @@
 <div>
+  {{ categories[0] }}
   <table class="entries striped">
     <thead>
       <tr>
@@ -11,8 +12,16 @@
     </thead>
     <tr ng-repeat="entry in entries">
       <td>{{ entry.execDate | date:'dd/MM/yyyy' }}</td>
-      <td>{{ entry.title }}</td>
-      <td>{{ entry.category }}</td>
+      <td class="entry-label">{{ entry.title }}</td>
+      <td ng-show="entry.category">{{ entry.category }}</td>
+      <td ng-hide="entry.category">
+        <ui-select ng-model="entry.newCategory" theme="select2" style="min-width: 220px;">
+          <ui-select-match>{{$select.selected.label}}</ui-select-match>
+          <ui-select-choices group-by="'group'" repeat="category in categories | propsFilter: {label: $select.search}">
+            <div ng-bind-html="category.label | highlight: $select.search"></div>
+          </ui-select-choices>
+        </ui-select>
+      </td>
       <td>{{ entry.amount | currency }}</td>
       <td></td>
     </tr>
