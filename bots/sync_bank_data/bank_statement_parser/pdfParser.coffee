@@ -64,15 +64,15 @@ LCL =
 basePath = __dirname
 
 pdfParser = (path, callback) ->
+  console.log path
   if fs.statSync(path).isDirectory()
-    for file in fs.readdirSync(path)
+    for file in fs.readdirSync(path) when file.split('.')?[1] == 'pdf'
       pdfParser(
         nodePath.join path, file
         callback
       )
     return
   scriptPath = nodePath.join basePath, 'python'
-  console.log scriptPath
   full = new PythonShell(
     'bank_statement_parser.py'
     {
@@ -86,14 +86,14 @@ pdfParser = (path, callback) ->
   pages = []
   full.on 'message', (page) =>
     pages.push page
-    console.log "page"
+    #console.log "page"
 
     match = page.match LCL.statementPattern.regexp
     if match
       startDate       = parseDate(match[LCL.statementPattern.mapping.startDate])
       endDate         = parseDate(match[LCL.statementPattern.mapping.endDate])
       statementNumber = parseInt match[LCL.statementPattern.mapping.statementNumber]
-      console.log startDate, endDate, match[0]
+      #console.log startDate, endDate, match[0]
 
     tables = new PythonShell(
       'bank_statement_parser.py'
@@ -132,11 +132,11 @@ pdfParser = (path, callback) ->
                         label.indexOf('Date') >= 0
                   value = parseDate(value, startDate).getTime()
                 entry[label] = value
-            if entry.creditAmount?
-              entry.amount = entry.creditAmount
+            if entry.creditAmount? and entry.creditAmount.match /\d+.\d\d/
+              entry.amount = parseFloat(entry.creditAmount)
               delete entry.creditAmount
-            if entry.debitAmount?
-              entry.amount = '-' + entry.debitAmount
+            if entry.debitAmount? and entry.debitAmount.match /\d+.\d\d/
+              entry.amount = (-1) * parseFloat(entry.debitAmount)
               delete entry.debitAmount
           else if isComplementaryLine(line, LCL.entryPattern) and
                   entries.length > 0

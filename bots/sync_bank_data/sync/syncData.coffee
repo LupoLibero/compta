@@ -1,12 +1,25 @@
-
+_ = require 'lodash'
 
 storeEntry = (db, ddoc, entry) ->
   db.update(ddoc + '/entry_add', '', entry).then(
     (result) =>
-      console.log "succ", result
+      console.log "succ", result, entry
     (err) =>
       console.log "error", err
   )
+
+probablyEqual = (a, b) ->
+  return a.date == b.date and a.amount == b.amount
+
+alreadyInDb = (entry, index) ->
+  #console.log indexKey(entry)
+  dupl = index[indexKey(entry)]
+  if dupl?
+    return probablyEqual(entry, dupl)
+  return false
+
+indexKey = (entry) ->
+  return entry.date + ' - ' + entry.amount
 
 module.exports = (db, ddoc, bankEntries, startDate, endDate) ->
   console.log "db", startDate, endDate
@@ -15,18 +28,27 @@ module.exports = (db, ddoc, bankEntries, startDate, endDate) ->
     endkey:   parseInt endDate
     include_docs: true
   }).then (result) ->
+    haveBeenStored = []
     entryToString = (entry) ->
       entry.date + entry.title + entry.execDate + entry.amount
-    dbEntries = (entryToString(r.doc) for r in result)
+    dbEntries = (r.doc for r in result)
+    index   = _.indexBy dbEntries, indexKey
 
     for entry, i in bankEntries
-      str = entryToString(entry)
-      idx = dbEntries.indexOf(str)
-      if idx == -1
-        console.log "store", entry
+      #console.log entry.date, entry.amount, entry.title
+      if not alreadyInDb(entry, index)
+        console.log "store"
+        if not index[indexKey(entry)]
+          index[indexKey(entry)] = []
+        index[indexKey(entry)].push entry
         storeEntry(db, ddoc, entry)
-      else
-        dbEntries.splice(idx, 1)
+        .catch =>
+          idx = index[indexKey(entry)].indexOf(entry)
+          index[indexKey(entry)].splice idx, 1
+        haveBeenStored.push(entry)
+
+    console.log "have been stored", haveBeenStored.length
+    console.log haveBeenStored
 
   .catch (err) ->
     console.log err
