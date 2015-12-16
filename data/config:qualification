@@ -1,0 +1,228 @@
+{
+   "_id": "config:qualification",
+   "_rev": "2-f2778814af5018345969340a395b4333",
+   "categories": [
+       [
+           "Les plus utilisés",
+           [
+               "Frais Bancaires",
+               "Honoraires Expert Comptable",
+               "Achats Prest Services 20%",
+               "Tel/Fax/Internet",
+               "Loyers et Charges"
+           ]
+       ],
+       [
+           "Assurances",
+           [
+               "Assurances"
+           ]
+       ],
+       [
+           "Attente",
+           [
+               "Attente",
+               "Doublon"
+           ]
+       ],
+       [
+           "Bureau",
+           [
+               "Elec/Gaz/Eau",
+               "Fourn. Administratives",
+               "Documentation",
+               "Frais postaux",
+               "Tel/Fax Internet",
+               "Petit Equipement",
+               "Formation"
+           ]
+       ],
+       [
+           "Clients",
+           [
+               "Remboursement avance client",
+               "Prestations Groupon EXO",
+               "Factor",
+               "Prestation Groupon Tx normal",
+               "CA Services 7% 2013",
+               "Prestations Groupon Tw réduit",
+               "CA Exo",
+               "CA Services 20%",
+               "CA Services 10%",
+               "CA M/ses 19,6% 2013",
+               "CA Divers 2013",
+               "CA Services 19,6% 2013",
+               "CA Services 5,5%",
+               "CA Services Export",
+               "CA Services CEE",
+               "CA Divers",
+               "CA M/ses 20%"
+           ]
+       ],
+       [
+           "Divers",
+           [
+               "Dons-Cotisations",
+               "Amendes-Pénalités",
+               "Subventions reçues"
+           ]
+       ],
+       [
+           "Frais bancaires",
+           [
+               "COMMISSION PAYPAL",
+               "Commissions CB",
+               "Agios",
+               "Frais Bancaires"
+           ]
+       ],
+       [
+           "Frais déplacement",
+           [
+               "Frais déplact,parking",
+               "Frais Repas",
+               "Frais déplact sans TVA"
+           ]
+       ],
+       [
+           "Honoraires et Commissions",
+           [
+               "Honoraires sans TVA",
+               "Commissions sur ventes 20%",
+               "honoraires CAC",
+               "Frais actes & contentieux",
+               "Comimission Groupon",
+               "Honoraires Expert Comptable",
+               "Honoraires Autres"
+           ]
+       ],
+       [
+           "Impôt",
+           [
+               "CET",
+               "Impôt Société",
+               "TVA à payer",
+               "Autres Impôts",
+               "Taxe sur Véhicule",
+               "Taxe Foncière",
+               "TVA déductible s/importations",
+               "Remboursement TVA"
+           ]
+       ],
+       [
+           "Investissement",
+           [
+               "Investissements",
+               "Cautions versées",
+               "Investissements sans TVA"
+           ]
+       ],
+       [
+           "Mouvement de trésorerie",
+           [
+               "Virt entre comptes",
+               "Retrait Plac Financiers",
+               "Placements Financiers"
+           ]
+       ],
+       [
+           "Publicité",
+           [
+               "Frais Publicité",
+               "Référencement Internet"
+           ]
+       ],
+       [
+           "Salariés",
+           [
+               "Autres Charges salariés",
+               "Charges Sociales salariés",
+               "Salaires versés"
+           ]
+       ],
+       [
+           "Achats",
+           [
+               "Achats PS Hors CEE",
+               "Achats Prest Services 20%",
+               "Achats PS CEE",
+               "Achats Consommables",
+               "Achats M/ses 20%",
+               "Achat PS 0%",
+               "Achat PS 7%",
+               "Achat prest.services 10%",
+               "Avance client",
+               "Achats M/ses CEE",
+               "Achats M/ses Hors CEE"
+           ]
+       ],
+       [
+           "Clientèle",
+           [
+               "restaurants/Invitations",
+               "Cadeaux clients"
+           ]
+       ],
+       [
+           "Crédit bail",
+           [
+               "Loyer Crédit Bail"
+           ]
+       ],
+       [
+           "Dirigeant",
+           [
+               "Apport cpte Associé 1",
+               "Reprise cpte Associé 2",
+               "Reprise cpte Exploitant",
+               "Apport cpte Exploitant",
+               "Rémunération Dirigeant",
+               "Prév/Mutuelles Dirigeant",
+               "Apport cpte Associé 2",
+               "Reprise cpte Associé 3",
+               "Charges sociales Dirigeant",
+               "Dividendes",
+               "Reprise cpte Associé 1",
+               "Apport cpte Associé 3"
+           ]
+       ],
+       [
+           "Emprunts",
+           [
+               "Echéance Emprunt n°2",
+               "Nouvel Emprunt",
+               "Echéance Emprunt n°1"
+           ]
+       ],
+       [
+           "Entretien",
+           [
+               "Maintenance",
+               "Entretien Matériel"
+           ]
+       ],
+       [
+           "Loyer",
+           [
+               "Location de logiciel",
+               "Loyers sans TVA",
+               "Location Matériels",
+               "Loyers et Charges"
+           ]
+       ],
+       [
+           "Véhicule",
+           [
+               "Carburant GO VT",
+               "Carburant GO VU",
+               "Carburant Essence"
+           ]
+       ],
+       [
+           "Capital",
+           [
+               "Capital"
+           ]
+       ]
+   ]
+}

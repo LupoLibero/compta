@@ -6,13 +6,8 @@
   "modules": [
     "lib"
   ],
-  "attachments": [
-    "html",
-    "static"
-  ],
   "dependencies": {
     "properties": null,
-    "attachments": null,
     "couchtypes": null,
     "modules": null
   }
