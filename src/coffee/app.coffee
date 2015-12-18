@@ -9,6 +9,8 @@ require 'angular-sanitize'
 
 app = angular.module('canaperp', ['ui.router', 'ngSanitize', 'ui.select'])
 
+require './Entry'
+
 #
 # AngularJS default filter with the following expression:
 # "person in people | filter: {name: $select.search, age: $select.search}"
