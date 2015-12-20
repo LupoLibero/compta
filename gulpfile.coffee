@@ -43,21 +43,22 @@ BUILD_DIR = "./www"
 paths =
   root: ''
   coffee: 'src/coffee/'
-  tmp:    'tmp'
-  jade: 'src/jade/'
+  tmp:    'www/js'
+  jade: 'src/views/'
   fonts: 'src/fonts/'
   sass: 'src/scss/'
   assets: 'assets/'
   output: BUILD_DIR + '/'
   js: BUILD_DIR + '/js/'
-  vendors: BUILD_DIR + '/vendors/'
+  vendorsIn: 'src/vendors/'
+  vendorsOut: BUILD_DIR + '/vendors/'
   kanso:   ("models/**/#{modName}.js" for modName in kansoModules).concat ['lib/*']
 
 onError = (error) ->
   gutil.beep()
   gutil.log gutil.colors.red error
 
-gulp.task 'build', ['coffee', 'jade', 'sass', 'build-app-file']
+gulp.task 'build', ['coffee', 'copy-vendors', 'jade', 'sass', 'build-app-file']
 
 gulp.task 'kanso-files', ->
   gulp.src(paths.kanso)
@@ -131,7 +132,7 @@ gulp.task 'browserify', ->
     packageCache: {}
   })
   b.bundle()
-    .pipe(source('app.js'))
+    .pipe(source('main.js'))
     .pipe(gulp.dest(paths.js))
 
 gulp.task 'copy-assets', ->
@@ -139,8 +140,8 @@ gulp.task 'copy-assets', ->
   .pipe gulp.dest paths.output
 
 gulp.task 'copy-vendors', ->
-  gulp.src paths.bower + '**/*.*'
-  .pipe gulp.dest paths.vendors
+  gulp.src paths.vendorsIn + '**/*.*'
+  .pipe gulp.dest paths.vendorsOut
 
 gulp.task 'copy-fonts', (done) ->
   gulp.src [paths.fonts + '**/*.{woff,woff2,eot,ttf}', 'bower_components/' + '**/*.{woff,woff2,eot,ttf}']
@@ -150,11 +151,11 @@ gulp.task 'copy-fonts', (done) ->
   .pipe reload({stream: true})
   return
 
-gulp.task 'jade-watch', ['jade'], reload
-gulp.task 'coffee-watch', ['coffee'], reload
-gulp.task 'browserify-watch', ['browserify'], reload
-gulp.task 'copy-vendors-watch', ['copy-vendors'], reload
-gulp.task 'copy-assets-watch', ['copy-assets'], reload
+gulp.task 'jade-watch', ['jade'], ->#reload
+#gulp.task 'coffee-watch', ['coffee'], reload
+#gulp.task 'browserify-watch', ['browserify'], reload
+gulp.task 'copy-vendors-watch', ['copy-vendors'], ->#reload
+gulp.task 'copy-assets-watch', ['copy-assets'], ->#reload
 
 gulp.task 'serve', ->
   proxyOptions = url.parse 'http://localhost:5984/canaperp'
@@ -170,8 +171,9 @@ gulp.task 'serve', ->
       middleware: [proxy(proxyOptions)]
     notify: false
 
-  watch paths.coffee + "**/*.coffee", {interval: 300}, -> gulp.start 'coffee-watch'
-  watch paths.tmp + "**/*.js", {interval: 300}, -> gulp.start 'browserify-watch'
+  watch paths.coffee + "**/*.coffee", {interval: 300}, -> gulp.start 'coffee'
+  watch paths.vendorsIn + "**/*.*", {interval: 300}, -> gulp.start 'copy-vendors-watch'
+  #watch [paths.tmp + "**/*.js", "!**/main.js"], {interval: 300}, -> gulp.start 'browserify-watch'
   watch paths.jade + "**/*.jade", {interval: 300}, -> gulp.start 'jade-watch'
   watch paths.sass + "**/*.*", {interval: 300}, -> gulp.start 'sass'
   watch paths.assets + "**/*.*", {interval: 300}, -> gulp.start 'copy-assets-watch'

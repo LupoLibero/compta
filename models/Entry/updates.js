@@ -18,3 +18,14 @@ exports.entry_add = function(doc, req) {
   }
   throw({forbidden: 'Not for entry modification'});
 }
+
+exports.entry_update_category = function(doc, req) {
+  var category = JSON.parse(req.body);
+  if (!doc) {
+    throw({forbidden: '404'});
+  } else {
+    doc.category = category
+    return [doc, 'ok'];
+  }
+  
+}

@@ -4,8 +4,14 @@
   "description": "automated ERP",
   "author": "Sylvain Duchesne",
   "repository": "https://github.com/LupoLibero/compta",
-  "licence": "GPL",
+  "license": "GPL",
   "homepage": "",
+  "main": "www/index.html",
+  "window": {
+    "toolbar": true,
+    "width": 900,
+    "height": 700
+  },
   "devDependencies": {
     "browser-sync": "^2.0.1",
     "browserify": "^12.0.1",

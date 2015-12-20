@@ -8,9 +8,9 @@ angular.module('canaperp')
 .service 'Entry', ($http) ->
   class Entry
     @updateCategory: (entry, category) ->
-      $http.put settings.url + '/_design/canapERP-main/_update/entry_update_category/' + entry._id,
-                category
-      .success =>
+      entry.category = category.label
+      app.db.put(entry)
+      .then =>
         console.log "succ"
       .catch (err) =>
         console.log "failure", err

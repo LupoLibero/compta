@@ -13,9 +13,11 @@
     <tr ng-repeat="entry in entries">
       <td>{{ entry.execDate | date:'dd/MM/yyyy' }}</td>
       <td class="entry-label">{{ entry.title }}</td>
-      <td ng-show="entry.category">{{ entry.category }}</td>
+      <td ng-show="entry.category.label">{{ entry.category.label }}</td>
+      <td ng-show="entry.category && ! entry.category.label">{{ entry.category }}</td>
       <td ng-hide="entry.category">
-        <ui-select ng-model="entry.newCategory" theme="select2" style="min-width: 220px;">
+        <ui-select ng-model="entry.category" theme="select2" style="min-width: 220px;"
+                   on-select="updateCategory(entry, $item)">
           <ui-select-match>{{$select.selected.label}}</ui-select-match>
           <ui-select-choices group-by="'group'" repeat="category in categories | propsFilter: {label: $select.search}">
             <div ng-bind-html="category.label | highlight: $select.search"></div>

@@ -1,7 +1,14 @@
 _ = require 'lodash'
 
 storeEntry = (db, ddoc, entry) ->
-  db.update(ddoc + '/entry_add', '', entry).then(
+  entry._id = 'entry' + ':' + entry.date + ':' + entry.amount
+  entry.createdAt = new Date().getTime()
+  entry.amount   = parseFloat(entry.amount)
+  entry.date     = parseInt(entry.date)
+  entry.execDate = parseInt(entry.date)
+  entry.type     = 'entry'
+
+  db.put(entry).then(
     (result) =>
       console.log "succ", result, entry
     (err) =>
@@ -22,8 +29,8 @@ indexKey = (entry) ->
   return entry.date + ' - ' + entry.amount
 
 module.exports = (db, ddoc, bankEntries, startDate, endDate) ->
-  console.log "db", startDate, endDate
-  db.view(ddoc + '/entry_all', {
+  console.log "db", db, ddoc, startDate, endDate
+  db.query(ddoc + '/entry_all', {
     startkey: parseInt startDate
     endkey:   parseInt endDate
     include_docs: true
