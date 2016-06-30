@@ -1,0 +1,7 @@
+{
+  "contact": "<email>",
+  "MAIL_URL": "smtp://<user>:<password>@<host>:<port>",
+  "public": {
+    "env": "dev"
+  }
+}

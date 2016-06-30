@@ -1,0 +1,24 @@
+template(name="App_body")
+  +sAlert
+  .container
+    header
+      +Nav
+    main
+      +Template.dynamic template=main
+
+template(name="Nav")
+  .navbar.navbar-default
+    .container-fluid
+      .navbar-brand Béton Direct - admin
+      .navbar-header
+        button.navbar-toggle.collapsed.left(type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false")
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+      .navbar-collapse.collapse(id="navbar-collapse")
+        ul.nav.navbar-nav
+          li(class="{{isActivePath '/'}}")
+            a(href="/" data-toggle="collapse" data-target="#navbar-collapse")
+              | Accueil
+      +loginButtons
