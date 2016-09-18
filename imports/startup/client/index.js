@@ -1,10 +1,15 @@
+import React         from 'react';
+import ReactDOM      from 'react-dom';
+import { Provider }  from 'react-redux';
+import { Meteor }  from 'meteor/meteor';
 import { TAPi18n } from 'meteor/tap:i18n';
 import { sAlert }  from 'meteor/juliancwirko:s-alert';
 
-import '../common/useraccounts-configuration.js';
-//import '../common/admin-configuration.js';
-import './routes.js';
+import Store from './store';
 
+import '../common/useraccounts-configuration.js';
+import '../common/admin-configuration.js';
+import './routes.js';
 
 TAPi18n.setLanguage("fr");
 
